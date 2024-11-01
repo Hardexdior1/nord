@@ -38,7 +38,7 @@ const NavBar = () => {
     
   ];
   return (
-    <div className="relative hidden md:initial md:block ">
+    <div className="relative  md:initial md:block ">
       <header
         className={`py-4 px-6 bg-transparent text-white font-semibold absolute left-0 right-0 top-0 z-20 grid gap-4 md:flex items-center justify-between z-10${
           isHomePage ? `` : `bg-black`

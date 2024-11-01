@@ -47,17 +47,7 @@ const LandingPage = () => {
     <div>
       <Slider />
 
-      <table>
-        <tr>
-          <th>company</th>
-          <th> contact </th>
-        </tr>
-
-        <tr>
-          <td>ojutu</td>
-          <td>alhaji street</td>
-        </tr>
-      </table>
+      
 
       <table>
         <tr>
