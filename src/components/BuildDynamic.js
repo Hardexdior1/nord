@@ -18,7 +18,7 @@ import "swiper/css";
 import { Helmet } from "react-helmet-async";
 import PaystackPayment from "./PaystackPayment";
 
-const BuildDynamic = () => {
+const BuildDynamic = ({ setTransactionHistory, transactionHistory }) => {
   const name = useParams();
   // console.log(name.name)
   const carType = [
@@ -32,7 +32,7 @@ const BuildDynamic = () => {
 
           option: "Luxury (1.6T)",
           description: "Environmentally cost reflective offer",
-          price: "₦46,500,000",
+          price: "₦46,000",
           imageUrl: "https://example.com/luxury-image.jpg",
         },
         {
@@ -40,7 +40,7 @@ const BuildDynamic = () => {
 
           option: "Luxury Pro (2.0T)",
           description: "Be more, be better, be greater.",
-          price: "₦49,000,000",
+          price: "₦49,000",
           imageUrl: "https://example.com/luxury-pro-image.jpg",
         },
       ],
@@ -55,7 +55,7 @@ const BuildDynamic = () => {
           option: "Manual Transmission",
           description: "Full control over the car performance.",
           imageUrl: "https://example.com/manual-mode.jpg",
-          price: "12,000,000",
+          price: "12,000,",
         },
         {
           label: "Transmission",
@@ -63,7 +63,7 @@ const BuildDynamic = () => {
           option: "Automatic Transmission",
           description: "Full control over the car performance.",
           imageUrl: "https://example.com/manual-mode.jpg",
-          price: "10,000,000",
+          price: "10,000",
         },
       ],
     },
@@ -107,12 +107,10 @@ const BuildDynamic = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [selectedOptions, setSelectedOptions] = useState([]);
 
-  console.log(selectedOptions);
   const totalPrice = Object.values(selectedOptions).reduce((acc, current) => {
     const priceValue = parseFloat(current.price.replace(/₦|,/g, ""));
     return acc + priceValue;
   }, 0);
-  console.log(totalPrice);
   const add = (carId, option) => {
     setSelectedOptions((previousSelected) => ({
       ...previousSelected,
@@ -252,7 +250,11 @@ const BuildDynamic = () => {
               <PaystackPayment
                 totalPrice={totalPrice}
                 selectedOptions={selectedOptions}
+                setSelectedOptions={setSelectedOptions}
                 parameter={name.name}
+                setTransactionHistory={setTransactionHistory}
+                transactionHistory={transactionHistory}
+                setCurrentStep={setCurrentStep}
               />{" "}
             </div>
           )}

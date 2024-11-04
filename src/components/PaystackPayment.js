@@ -1,9 +1,17 @@
 import React, { useState } from "react";
 import { PaystackButton } from "react-paystack";
+import { useNavigate } from "react-router-dom";
 
-const PaystackPayment = ({ totalPrice, selectedOptions, parameter }) => {
-  const publicKey = "pk_test_b8b7d8af804f4f40170a151f7ba3173fc325c591"; // Replace with your Paystack public key
-  const [transactionHistory, setTransactionHistory] = useState([]);
+const PaystackPayment = ({
+  totalPrice,
+  selectedOptions,
+  parameter,
+  setTransactionHistory,
+  transactionHistory,
+  setCurrentStep,
+}) => {
+  const navigate = useNavigate();
+  const publicKey = "pk_test_b8b7d8af804f4f40170a151f7ba3173fc325c591";
   console.log(transactionHistory);
 
   const [email, setEmail] = useState("");
@@ -23,13 +31,14 @@ const PaystackPayment = ({ totalPrice, selectedOptions, parameter }) => {
       email,
       name,
       ref,
+      parameter,
       date: transactionDate.toLocaleString(),
       selectedOptions,
     };
     setTransactionHistory((prevHistory) => [...prevHistory, newTransaction]);
+    navigate("/success", { state: { canViewSuccess: true } });
 
-    alert(`Payment successful! Reference: ${reference.reference}`);
-    console.log(reference);
+    setCurrentStep(0);
   };
 
   const onClose = () => {

@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Link, Routes } from "react-router-dom";
 
-import { HelmetProvider } from "react-helmet-async";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import "./App.css"
 import NavBar from "./components/NavBar";
 import LandingPage from "./components/LandingPage";
@@ -9,7 +9,9 @@ import Vehicle from "./components/Vehicle";
 import BuildYourVehicle from "./components/BuildYourVehicle";
 import Board from "./components/Board";
 import BuildDynamic from "./components/BuildDynamic";
-
+import { useEffect, useState } from "react";
+import SuccessfulPayment from "./components/SuccessfulPayment";
+import OrderHistory from "./components/OrderHistory";
 // import Text from "./components/Text";
 function App() {
   const test = [
@@ -44,13 +46,28 @@ function App() {
       ],
     },
   ];
+  const savedData = localStorage.getItem('transactionHistory');
+  const initialHistory = savedData ? JSON.parse(savedData) : [];
+
+  // Initialize transactionHistory with the saved data
+  const [transactionHistory, setTransactionHistory] = useState(initialHistory);
+console.log(transactionHistory)
+  // Save transactionHistory to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('transactionHistory', JSON.stringify(transactionHistory));
+  }, [transactionHistory]);
 
   return (
     <HelmetProvider>
       {/* Your routes and components */}
       <div className="relative">
+      <Helmet>
+        <title>Home-Nord </title>
+        <meta name="description" content={`Vehicles`} />
+      </Helmet>
         {/* <Text /> */}
         <BrowserRouter>
+        
           <NavBar />
           <Routes>
             <Route path="/" element={<LandingPage />} />
@@ -60,13 +77,23 @@ function App() {
             <Route path="/board" element={<Board />} />
 
             <Route path="/build-your-vehicle" element={<BuildYourVehicle />} />
-            <Route path="/build-vehicle/:name" element={<BuildDynamic />} />
+            <Route path="/build-vehicle/:name" element={<BuildDynamic setTransactionHistory={setTransactionHistory}  transactionHistory={transactionHistory}/>} />
+            <Route path="/success" element={<SuccessfulPayment transactionHistory={transactionHistory}/>} />
+            <Route path="/order-history" element={<OrderHistory transactionHistory={transactionHistory} />} />
 
 
+            
           </Routes>
         </BrowserRouter>
 
-       
+        {/* <div className="flex justify-center my-10">
+            <a
+              href=""
+              className="text-blue-600 hover:underline font-medium"
+            >
+              Refresh
+            </a>
+          </div> */}
       </div>
 
     </HelmetProvider>
