@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import a31 from "../images/a31.jpg";
 import a32 from "../images/a32.jpg";
 import a33 from "../images/a33.jpg";
@@ -15,6 +15,7 @@ import "swiper/css/autoplay";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+
 import { Helmet } from "react-helmet-async";
 
 const DynamicRoute = () => {
@@ -103,117 +104,49 @@ const DynamicRoute = () => {
   const filtered = carData.filter(
     (item) => item.name.toLowerCase() == name.name.toLowerCase()
   );
-  console.log(name, " ==>>>", filtered);
-  // 5682387228
-  useEffect(()=>{
-    window.scrollTo(0,0)
-  })
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   return (
     <div className="bg-black py-40 px-6 md:px-20  text-white">
-      {/* {filtered.length > 0 ? (
-        <div>
-          {filtered.map((car) => {
-            return (
-              <div className="grid gap-8 md:grid-cols-2">
-                <div className="w-full">
-                <h1 className="text-3xl md:text-4xl font-bold mb-4 md:hidden">
-                    {" "}
-                    {car.name}{" "}
-                  </h1>
-                  <Swiper
-                    modules={[Autoplay]} // Add Autoplay module
-                    spaceBetween={30}
-                    centeredSlides={true}
-                    autoplay={{
-                      delay: 5000, // Slide delay in ms
-                      disableOnInteraction: false, // Continue autoplay after user interaction
-                    }}
-                    loop={true}
-                    pagination={{ clickable: true }}>
-                    <Swiper>
-                      {car?.images.map((item) => {
-                        return (
-                          <SwiperSlide>
-                            <div>
-                              <img className="h-[50vh] md:h-auto" src={item.image} alt={car.name} />
-                            </div>
-                          </SwiperSlide>
-                        );
-                      })}
-                    </Swiper>
-                  </Swiper>
-                </div>
-
-                <div className="flex flex-col gap-4 ">
-                  <h1 className="text-3xl hidden md:text-4xl font-bold md:block">
-                    {" "}
-                    {car.name}{" "}
-                  </h1>
-                  <h1 className="text-2xl md:text-3xl font-semibold">
-                    {" "}
-                    About Car{" "}
-                  </h1>
-
-                  <p> {car.description} </p>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      ) : (
-        <div>oops nothing found </div>
-      )} */}
+      <Helmet>
+        <title> {name.name}-Nord Motion</title>
+        <meta name="description" content={`About ${name.name}`} />
+      </Helmet>
       {filtered.length > 0 ? (
         <div>
-          <Helmet>
-            <title> {name.name}-Nord Motion</title>
-            <meta name="description" content={`About ${name.name}`} />
-          </Helmet>
           {filtered.map((car) => {
             return (
-              <div className="grid gap-8 md:grid-cols-2">
+              <div className=" md:grid gap-8 grid-cols-2">
                 <div className="w-full">
                   {/* Mobile heading */}
                   <h1 className="text-3xl md:text-4xl font-bold mb-4 md:hidden">
                     {car.name}
                   </h1>
 
-                  {/* <img src={car.img} alt="" /> */}
-                  {/* Swiper Component */}
                   <Swiper
                     modules={[Autoplay]}
-                    spaceBetween={30}
+                    spaceBetween={10}
                     centeredSlides={true}
                     autoplay={{
-                      delay: 4000,
+                      delay: 3000,
                       disableOnInteraction: false,
                     }}
                     loop={true}
                     pagination={{ clickable: true }}>
-                    {car?.images.map((item, index) => {
-                      return (
-                        <SwiperSlide key={index}>
-                          <div>
-                            <img
-                              className="w-full h-[50vh] md:h-auto object-cover"
-                              src={item.image}
-                              alt={car.name}
-                            />
-                          </div>
-                        </SwiperSlide>
-                      );
-                    })}
+                    {car?.images.map((item, index) => (
+                      <SwiperSlide key={index}>
+                        <div
+                          className="w-full h-48 sm:h-64 md:h-80 lg:h-96 bg-center bg-cover mb-5 md:mb-0"
+                          style={{
+                            backgroundImage: `url(${item.image})`,
+                          }}>
+                          <div className="flex items-center justify-center h-full bg-black bg-opacity-40 text-white font-bold"></div>
+                        </div>
+                      </SwiperSlide>
+                    ))}
                   </Swiper>
-
-                  <div className="flex items-center gap-4">
-                  {car.images.map((car)=>{
-                    return <div>
-                      <img src={car.image} alt="" />
-                    </div>
-                  })}
-                  </div>
                 </div>
-
                 {/* Car Details */}
                 <div className="flex flex-col gap-4">
                   {/* Desktop heading */}
@@ -221,17 +154,75 @@ const DynamicRoute = () => {
                     {car.name}
                   </h1>
 
-                  <h1 className="text-2xl md:text-3xl font-semibold">
+                  <h1 className="text-2xl mt-5 md:text-3xl font-semibold mt-0">
                     About Car
                   </h1>
                   <p>{car.description}</p>
+                  <div>
+                    <Link to={`/build-vehicle/${car.name}`}>
+                      <button className="inline-block px-8 py-2 rounded border border-gray-400 bg-white font-semibold text-black">
+                        Customize this car
+                      </button>
+                    </Link>
+                  </div>
                 </div>
               </div>
             );
           })}
         </div>
       ) : (
-        <div>oops nothing found</div>
+        <div>
+          <div className=" md:grid gap-8 grid-cols-2">
+            <div className="w-full">
+              {/* Mobile heading */}
+              <h1 className="text-3xl md:text-4xl font-bold mb-4 md:hidden">
+               { name.name}
+              </h1>
+
+              <Swiper
+                modules={[Autoplay]}
+                spaceBetween={10}
+                centeredSlides={true}
+                autoplay={{
+                  delay: 3000,
+                  disableOnInteraction: false,
+                }}
+                loop={true}
+                pagination={{ clickable: true }}>
+                {carData[0]?.images.map((item, index) => (
+                  <SwiperSlide key={index}>
+                    <div
+                      className="w-full h-48 sm:h-64 md:h-80 lg:h-96 bg-center bg-cover mb-5 md:mb-0"
+                      style={{
+                        backgroundImage: `url(${item.image})`,
+                      }}>
+                      <div className="flex items-center justify-center h-full bg-black bg-opacity-40 text-white font-bold"></div>
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+            {/* Car Details */}
+            <div className="flex flex-col gap-4">
+              {/* Desktop heading */}
+              <h1 className="text-3xl hidden md:text-4xl font-bold md:block">
+                {name.name}
+              </h1>
+
+              <h1 className="text-2xl mt-5 md:text-3xl font-semibold mt-0">
+                About Car
+              </h1>
+              <p>{carData[0].description}</p>
+              <div>
+                <Link to={`/build-vehicle/${name.name}`}>
+                  <button className="inline-block px-8 py-2 rounded border border-gray-400 bg-white font-semibold text-black">
+                    Customize this car
+                  </button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );

@@ -103,7 +103,7 @@ const Vehicle = () => {
                 <Link to={`/vehicle/${car.name}`}>
                   <h1 className="text-[#000] text-3xl mt-3 font-bold">
                     {" "}
-                    {car.name}{" "}
+                    {car.name}
                   </h1>
                 </Link>
               </div>
