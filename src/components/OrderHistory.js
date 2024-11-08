@@ -1,15 +1,17 @@
-
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 // import Work from "./Work";
 
 const OrderHistory = ({ transactionHistory }) => {
   console.log(transactionHistory);
 
- 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+  
   return (
     <div className="p-6 bg-gray-100 min-h-screen py-40">
-     {/* <Work /> */}
+      {/* <Work /> */}
       <Helmet>
         <title>Order History</title>
         <meta name="description" content="Vehicle Order History" />

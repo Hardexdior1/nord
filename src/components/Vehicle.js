@@ -89,7 +89,7 @@ const Vehicle = () => {
         </div>
       </div>
 
-      <div className="px-4 -mt-20 md:px-20 absolute bg-black">
+      <div className="px-4 z-40  md:px-20  bg-black">
         <div className="bg-white  px-4 text-center py-8 grid gap-6 md:px-8 md:grid-cols-2 xl:grid-cols-3">
           {vehicles.map((car, index) => {
             return (

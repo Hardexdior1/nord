@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import norda9 from "../images/A9-Home-page-1-1536x1024.jpg";
@@ -60,6 +60,9 @@ const BuildYourVehicle = () => {
       img: norda3,
     },
   ];
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="bg-black">
@@ -121,7 +124,9 @@ const BuildYourVehicle = () => {
                   <h1 className="text-white text-3xl ont-bold ">{car.name}</h1>
 
                   <button className="px-2 py-1 rounded-full border border-grey-800  hover:text-gray-800 hover:bg-white">
-                    <Link to={`/build-vehicle/${car.name}`}>Customize this car</Link>
+                    <Link to={`/build-vehicle/${car.name}`}>
+                      Customize this car
+                    </Link>
                   </button>
                 </div>
               </div>

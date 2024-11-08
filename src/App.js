@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Link, Routes } from "react-router-dom";
 
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import "./App.css"
+import "./App.css";
 import NavBar from "./components/NavBar";
 import LandingPage from "./components/LandingPage";
 import DynamicRoute from "./components/DynamicRoute";
@@ -12,6 +12,8 @@ import BuildDynamic from "./components/BuildDynamic";
 import { useEffect, useState } from "react";
 import SuccessfulPayment from "./components/SuccessfulPayment";
 import OrderHistory from "./components/OrderHistory";
+import Footer from "./components/Footer";
+import Contact from "./components/Contact";
 // import Text from "./components/Text";
 function App() {
   const test = [
@@ -46,28 +48,32 @@ function App() {
       ],
     },
   ];
-  const savedData = localStorage.getItem('transactionHistory');
+  const savedData = localStorage.getItem("transactionHistory");
   const initialHistory = savedData ? JSON.parse(savedData) : [];
 
   // Initialize transactionHistory with the saved data
   const [transactionHistory, setTransactionHistory] = useState(initialHistory);
-console.log(transactionHistory)
+  console.log(transactionHistory);
   // Save transactionHistory to localStorage whenever it changes
   useEffect(() => {
-    localStorage.setItem('transactionHistory', JSON.stringify(transactionHistory));
+    localStorage.setItem(
+      "transactionHistory",
+      JSON.stringify(transactionHistory)
+    );
+
+    window.scrollTo(0, 0);
   }, [transactionHistory]);
 
   return (
     <HelmetProvider>
       {/* Your routes and components */}
       <div className="relative">
-      <Helmet>
-        <title>Home-Nord </title>
-        <meta name="description" content={`Vehicles`} />
-      </Helmet>
+        <Helmet>
+          <title>Home-Nord </title>
+          <meta name="description" content={`Vehicles`} />
+        </Helmet>
         {/* <Text /> */}
         <BrowserRouter>
-        
           <NavBar />
           <Routes>
             <Route path="/" element={<LandingPage />} />
@@ -75,15 +81,30 @@ console.log(transactionHistory)
 
             <Route path="/vehicles" element={<Vehicle />} />
             <Route path="/board" element={<Board />} />
+            <Route path="/find-us" element={<Contact />} />
 
             <Route path="/build-your-vehicle" element={<BuildYourVehicle />} />
-            <Route path="/build-vehicle/:name" element={<BuildDynamic setTransactionHistory={setTransactionHistory}  transactionHistory={transactionHistory}/>} />
-            <Route path="/success" element={<SuccessfulPayment transactionHistory={transactionHistory}/>} />
-            <Route path="/order-history" element={<OrderHistory transactionHistory={transactionHistory} />} />
-
-
-            
+            <Route
+              path="/build-vehicle/:name"
+              element={
+                <BuildDynamic
+                  setTransactionHistory={setTransactionHistory}
+                  transactionHistory={transactionHistory}
+                />
+              }
+            />
+            <Route
+              path="/success"
+              element={
+                <SuccessfulPayment transactionHistory={transactionHistory} />
+              }
+            />
+            <Route
+              path="/order-history"
+              element={<OrderHistory transactionHistory={transactionHistory} />}
+            />
           </Routes>
+          <Footer />
         </BrowserRouter>
 
         {/* <div className="flex justify-center my-10">
@@ -95,7 +116,6 @@ console.log(transactionHistory)
             </a>
           </div> */}
       </div>
-
     </HelmetProvider>
   );
 }
