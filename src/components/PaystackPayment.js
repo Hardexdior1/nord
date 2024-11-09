@@ -7,12 +7,10 @@ const PaystackPayment = ({
   selectedOptions,
   parameter,
   setTransactionHistory,
-  transactionHistory,
   setCurrentStep,
 }) => {
   const navigate = useNavigate();
   const publicKey = "pk_test_b8b7d8af804f4f40170a151f7ba3173fc325c591";
-  console.log(transactionHistory);
 
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -43,7 +41,6 @@ const PaystackPayment = ({
 
   const onClose = () => {
     alert("Payment closed without completing.");
-    console.log("Payment dialog closed");
   };
 
   // Paystack button properties
@@ -61,75 +58,7 @@ const PaystackPayment = ({
   };
 
   return (
-    // <div className="p-6 mx-auto text-center font-sans border border-gray-200 rounded-lg shadow-lg">
-    //   <div>
-    //     {" "}
-    //     <div className="mb-6">
-    //     <h2 className="text-2xl font-semibold text-gray-800 mb-0">
-    //       Fill the delivery form and pay
-    //     </h2>
-    //     <small> the payment is just for testing, nothing would be deducted from your bank , Thank you </small>
-    //     </div>
-    //     {/* Inputs to capture user email and name */}
-    //     <input
-    //       type="email"
-    //       placeholder="Enter Email"
-    //       value={email}
-    //       onChange={(e) => setEmail(e.target.value)}
-    //       className="w-full text-black mb-4 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-    //     />
-    //     <input
-    //       type="text"
-    //       placeholder="Enter your fullname"
-    //       value={name}
-    //       onChange={(e) => setName(e.target.value)}
-    //       className="w-full text-black mb-4 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-    //     />
-    //     <input
-    //       type="text"
-    //       placeholder="Enter address"
-    //       className="w-full text-black mb-4 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-    //     />
-    //     <input
-    //       type="number"
-    //       placeholder="Enter phone number"
-    //       className="w-full text-black mb-4 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-    //     />
-    //   </div>
-
-    //   {/* Displaying the dynamic total price */}
-    //   <div>
-    //     <h3 className="text-xl font-medium text-gray-700 mb-4">
-    //       Total Price: ₦{formattedPrice}
-    //     </h3>
-
-    //     {Object.keys(selectedOptions).length > 0 && (
-    //       <div>
-    //         <h1>Car Type</h1>
-    //         <p>{parameter}</p>
-    //         <table>
-    //           <tr className="overflow-x-scroll">
-    //             {Object.values(selectedOptions).map((car, index) => (
-    //               <th className="px-8 shrink-0"> {car.label} </th>
-    //             ))}
-    //           </tr>
-
-    //           <tr className="overflow-x-scroll">
-    //             {Object.values(selectedOptions).map((car, index) => (
-    //               <td className="px-8 shrink-0"> {car.option} </td>
-    //             ))}
-    //           </tr>
-
-    //         </table>
-    //       </div>
-    //     )}
-
-    //     <PaystackButton
-    //       {...componentProps}
-    //       className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded-lg transition duration-200 ease-in-out"
-    //     />
-    //   </div>
-    // </div>
+   
     <div className="p-6 mx-auto font-sans border border-gray-200 rounded-lg shadow-lg max-w-4xl">
       <div className="flex flex-col lg:flex-row gap-8">
         {/* Form Section */}

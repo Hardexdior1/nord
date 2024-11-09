@@ -260,21 +260,7 @@ const BuildDynamic = ({ setTransactionHistory, transactionHistory }) => {
           )}
         </div>
 
-        {/* {currentStep < steps.length - 1 && (
-          <button
-            onClick={handleNext}
-            className="bg-blue-500 mt-5 text-white font-semibold py-2 px-6 rounded-lg shadow-lg hover:bg-blue-600">
-            {currentStep < steps.length - 1 ? "Next" : "Submit"}
-          </button>
-        )}
-
-        {currentStep > steps.length - 1 && (
-          <button
-            onClick={handlePrev}
-            className="bg-blue-500 mt-5 text-white font-semibold py-2 px-6 rounded-lg shadow-lg hover:bg-blue-600">
-            prev
-          </button>
-        )} */}
+       
         <div className="flex items-center justify-around ">
           {currentStep > 0 && (
             <button

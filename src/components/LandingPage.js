@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import Slider from "./Slider";
-import Product from "./Product";
 const LandingPage = () => {
   
     
