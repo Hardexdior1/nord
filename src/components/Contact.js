@@ -5,7 +5,7 @@ const Contact = () => {
    
     
 <div className="bg-gray-900 text-gray-200 py-20 px-6 mt-20 lg:px-16">
-  <div className="container mx-auto md:flex items-top justify-center gap-35">
+  <div className="container mb-8 mx-auto md:flex items-top justify-center gap-35 mb:mb-0">
     {/* Address Section */}
     <div>
       <h2 className="text-2xl font-bold mb-4 text-white">Address</h2>
@@ -29,7 +29,7 @@ const Contact = () => {
 
     {/* Contact Form Section */}
     <div>
-      <h2 className="text-2xl font-bold mb-4 text-white">Send Us a Message</h2>
+      <h2 className="text-2xl font-bold mb-4 mt-10 text-white md:mt-0">Send Us a Message</h2>
       <form className="space-y-4" onSubmit={(()=>{
         alert("form submitted succesfully")
       })}>

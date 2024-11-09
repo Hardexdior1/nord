@@ -63,7 +63,9 @@ function App() {
 
     window.scrollTo(0, 0);
   }, [transactionHistory]);
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <HelmetProvider>
       {/* Your routes and components */}
