@@ -47,7 +47,7 @@ const Board = () => {
         </div>
       </div>
 
-      <div className="px-4 py-8 md:px-20 bg-[#000]">
+      <div className="px-4 py-8 md:px-20 bg-gray-900 text-gray-200">
         <div className="px-4  py-8 grid gap-10 ">
           {board.map((car, index) => {
             return (

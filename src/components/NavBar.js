@@ -129,21 +129,24 @@ const NavBar = () => {
         </div>
 
         {/* Mobile Menu Toggle Button */}
-        <div className="md:hidden flex items-center text-white">
-          <button onClick={toggleMenu}>
-            {isOpen ? <FiX className="text-2xl" /> : <FiMenu className="text-2xl" />}
+        <div className="md:hidden z-30 flex items-center text-white">
+          <button onClick={toggleMenu} className="z-30">
+            {isOpen ? <FiX className="text-2xl z-30" /> : <FiMenu className="text-2xl z-30" />}
           </button>
         </div>
       </header>
 
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-x-0 top-0 bg-black text-white flex flex-col items-center justify-start transition-all duration-300 transform ${
+        className={`fixed inset-x-0 top-0 bg-black z-30 text-white flex flex-col items-center justify-start transition-all duration-300 transform ${
           isOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-full"
         } md:hidden`}
         style={{ maxHeight: '50vh' }} // Adjust this value to change the height
       >
-        <ul className="flex flex-col items-center gap-4 text-lg overflow-y-auto pt-16"> {/* Add padding-top to account for header */}
+        <ul className="flex flex-col items-center gap-4 text-lg overflow-y-auto pt-16 pb-16 relative"> 
+        <button onClick={toggleMenu} className="z-30 absolute right-0">
+            {isOpen ? <FiX className="text-2xl z-30" /> : <FiMenu className="text-2xl z-30" />}
+          </button>{/* Add padding-top to account for header */}
           {navLinks.map((item) => (
             <li key={item.name}>
               <Link

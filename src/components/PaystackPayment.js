@@ -135,7 +135,7 @@ const PaystackPayment = ({
         {/* Form Section */}
         <div className="lg:w-1/2">
           <div className="text-center mb-6">
-            <h2 className="text-1xl font-semibold text-gray-800 mb-2 md:text-2xl mb-0">
+            <h2 className="text-1xl font-semibold text-black mb-2 md:text-2xl mb-0">
               Fill the delivery form and pay
             </h2>
             <small>

@@ -164,7 +164,7 @@ const BuildDynamic = ({ setTransactionHistory, transactionHistory }) => {
     <div>
       <img src={a36} className="w-full h-80 object-cover" alt="car-img" />
 
-      <div className="bg-[#757575] py-20 px-6 md:px-20  text-white">
+      <div className=" bg-gray-900 py-20 px-6 md:px-20  text-white">
         <Helmet>
           <title> {name.name}-Nord Motion</title>
           <meta name="description" content={`About ${name.name}`} />

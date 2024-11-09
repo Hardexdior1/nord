@@ -4,8 +4,8 @@ const Contact = () => {
   return (
    
     
-<div className="bg-black text-gray-200 py-12 px-6 lg:px-16">
-  <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12">
+<div className="bg-gray-900 text-gray-200 py-20 px-6 mt-20 lg:px-16">
+  <div className="container mx-auto md:flex items-top justify-center gap-35">
     {/* Address Section */}
     <div>
       <h2 className="text-2xl font-bold mb-4 text-white">Address</h2>
