@@ -176,7 +176,7 @@ const BuildDynamic = ({ setTransactionHistory, transactionHistory }) => {
               <h1
                 className={
                   index == currentStep
-                    ? " py-2 px-10 border-b text-black font-bold shrink-0"
+                    ? " py-2 px-10 border-b border-[#28A745] text-[#28A745] font-bold shrink-0"
                     : "text-gray-400 font-bold shrink-0 px-10"
                 }>
                 {" "}
